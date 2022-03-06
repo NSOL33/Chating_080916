@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="{{ url_for('static', filename='icon.png') }}">
+        <style>
+            *{background-color: black;text-align: center}
+            #msg{width: 80%;height: 30%;background-color:rgba(4, 118, 248, 0.856);color: rgb(255, 255, 255);margin: 10%;font-size:xx-large;text-align: center;border-radius:40px 40px 0 0;}
+            #msg:hover{width: 80%;height: 30%;background-color:rgba(4, 248, 37, 0.726);color: rgb(255, 255, 255);margin: 10%;font-size:xx-large;text-align: center;border-radius:40px 40px 0 0;}
+            #in_msg{background-color:rgba(4, 118, 248, 0);}
+            #type{border-radius:20px;color:white;width:50%;height:17%;}
+            #button:hover{background-color:rgba(4, 248, 37, 0.726);width:80px;height:80px}
+            #button{background-color:rgba(4, 118, 248, 0.856);width:70px;height:70px;font-size: large;border-radius:1000px;margin-left:50px;font-size: x-large;color:white;font-weight:bold;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;}
+        </style>
+       <script>
+           function security(){
+               var num=prompt("Enter your pin");
+               if(num==1216){
+                    document.getElementById("msg").style.borderBottomRightRadius="40px";
+                    
+               }
+               else if(num==0816){
+                    document.getElementById("msg").style.borderBottomLeftRadius="40px";
+                   
+               }
+               else{
+                   document.getElementById("msg").innerHTML="wrong pin";
+                   document.getElementById("button").disabled=true;
+               }
+           }
+       </script>
+    </head>
+    <body onload="security()">
+        <div id="msg"><br><br><a id="in_msg">Msg:{{msg}}</a></div>
+        <form action="\send" method="post">
+            <input name="message" id="type">
+            
+            <button onclick="send()" id="button"> ↑ </button>
+        </form>
+    </body>
+</html>
